@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import db from '../../firebase';
 import { collection, addDoc } from 'firebase/firestore';
 import { courses } from '../CoursesList/Courseslist';
+import { toast, ToastContainer } from 'react-toastify';
 
 const Registration = () => {
   const usernameRef = useRef();
@@ -32,10 +33,7 @@ const Registration = () => {
         mode: courseDetails.mode,
         registrationDate: new Date().toISOString(),
       });
-      alert('Registration successful!');
-      usernameRef.current.value = '';
-      setSelectedCourse('');
-      setCourseDetails({ duration: '', mode: '' });
+      toast.success('Registration successful')
     } catch (error) {
       console.error('Error adding document: ', error);
       alert('Registration failed. Please try again.');
@@ -102,6 +100,7 @@ const Registration = () => {
           </button>
         </div>
       </form>
+      <ToastContainer/>
     </div>
   );
 };
