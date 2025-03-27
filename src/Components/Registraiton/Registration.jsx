@@ -1,16 +1,7 @@
 import React, { useRef, useState } from 'react';
-import db from '../../firebase'; // Adjust the path to your Firebase configuration
+import db from '../../firebase';
 import { collection, addDoc } from 'firebase/firestore';
-
-const courses = [
-  { name: 'Art and Craft', duration: '2 months', mode: 'Offline' },
-  { name: 'Science', duration: '2 months', mode: 'Offline' },
-  { name: 'Math', duration: '2 months', mode: 'Offline' },
-  { name: 'Social', duration: '2 months', mode: 'Offline' },
-  { name: 'English', duration: '2 months', mode: 'Offline' },
-  { name: 'Hindi', duration: '2 months', mode: 'Offline' },
-  { name: 'Kannada', duration: '2 months', mode: 'Offline' },
-];
+import { courses } from '../CoursesList/Courseslist';
 
 const Registration = () => {
   const usernameRef = useRef();
