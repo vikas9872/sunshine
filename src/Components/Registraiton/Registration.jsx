@@ -12,8 +12,6 @@ const Registration = () => {
   const handleCourseChange = (e) => {
     const courseName = e.target.value;
     setSelectedCourse(courseName);
-
-    // Find the selected course details
     const course = courses.find((c) => c.name === courseName);
     if (course) {
       setCourseDetails({ duration: course.duration, mode: course.mode });

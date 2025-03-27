@@ -4,6 +4,7 @@ import { doc, setDoc } from "firebase/firestore";
 import db from '../../firebase';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
 import { useNavigate } from 'react-router-dom';
+import bcrypt from 'bcryptjs';
 
 const User = () => {
   const [isLogin, setIsLogin] = useState(true)
@@ -18,12 +19,13 @@ const User = () => {
       const email = emailRef.current.value
       const password = passwordRef.current.value
       const name = nameRef.current.value
+      const hashedPassword = await bcrypt.hash(password, 10);
       const userCredential = await createUserWithEmailAndPassword(auth, email, password)
       const user = userCredential.user;
       await setDoc(doc(db, "users", user.uid), {
         name: name,
         email: email,
-        password: password
+        password: hashedPassword
       });
       navigate("/courses")
       console.log('user logged in:', user)
