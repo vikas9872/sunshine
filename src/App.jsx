@@ -9,6 +9,7 @@ import Courses from './Components/Courses/Courses'
 import Ngoanduser from './Components/Ngoanduser/Ngoanduser'
 import Manager from './Components/Ngo/Manager'
 import Dashboard from './Components/Dashboard/Dashboard'
+import Registration from './Components/Registraiton/Registration'
 function App() {
   return (
     <>
@@ -24,6 +25,7 @@ function App() {
             <Route path='/ngoanduser' element={<Ngoanduser/>}/>
             <Route path='/ngo' element={<Manager/>}/>
             <Route path='/managerdashboard' element={<Dashboard/>}/>
+            <Route path='/registration' element={<Registration/>}/>
           </Routes>
         </div>
       </div>
